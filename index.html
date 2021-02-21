@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleaning Hogwarts Data</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1>Hogwarts School of Witchcraft and Wizardry</h1>
+    <h2>Student List 1991</h2>
+
+    <table id="list">
+        <thead>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>MiddleName</th>
+                <th>NickName</th>
+                <th>Gender</th>
+                <th>House</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- student template will be copied and inserted here -->
+        </tbody>
+    </table>
+        <!-- <div class="sectionwrapper">
+            <template id="studentTemplate">
+                <div class="student">
+                    <h2 class="studentName">Full name</h2>
+                    <h2 class="firstName">first name</h2>
+                    <h2 class="middleName">middle name</h2>
+                    <h2 class="lastName">last name</h2>
+                    <h2 class="nickName1">middle name 1</h2>
+                    <h2 class="nickName2">middle name 2</h2>
+                    <img class="image" src="" alt="studentPhoto"> 
+                    <h2 class="house">house</h2>
+                    <h2 class="gender">gender</h2>
+                </div>
+            </template>
+        </div> -->
+
+    <!-- <div class="modalBackground hide">
+        <div class="modelContent">
+            <h2 class="modalStudentName">Student Name</h2>
+            <h2 class="modalHouse">house</h2>
+            <h2 class="modalGender">gender</h2>
+            
+            <img class="modalImage" src="" alt="studentPhoto">
+            <div class="modalColor"></div>
+        </div>
+    </div> -->
+
+    <template id="student">
+        <tr>
+          <td data-field="firstName">FIRST NAME</td>
+          <td data-field="lastName">LAST NAME</td>
+          <td data-field="middleName">MIDDLE NAME</td>
+          <td data-field="nickName">NICK NAME</td>
+          <td data-field="gender">GENDER</td>
+          <td data-field="house">HOUSE</td>
+          <td data-field="image"><img class="image" src="" alt=""></td>
+          <!-- <td><img src="images/" alt=""></td> -->
+          <img src="" alt=""/>
+        </tr>
+      </template>
+    
+<script src="script.js"></script>  
+</body>
+</html>
