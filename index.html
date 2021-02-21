@@ -14,16 +14,27 @@
     </header>
     <main>
     <h2>Student List 1991</h2>
-    <div>
-        <label>Filter:</label><br>
-        <button class="filter" data-action="filter" data-filter="Slytherin">Slytherin</button><br>
-        <button class="filter" data-action="filter" data-filter="Ravenclaw">Ravenclaw</button><br>
-        <button class="filter" data-action="filter" data-filter="Hufflepuff">Hufflepuff</button><br>
-        <button class="filter" data-action="filter" data-filter="Gryffindor">Gryffindor</button><br>
-        <button class="filter" data-action="filter" data-filter="bloodType">Blood Type</button><br>
-        <button class="filter" data-action="filter" data-filter="responsibility">Responsibility</button><br>
-        <button class="filter" data-action="filter" data-filter="expelled">Expelled</button><br>
-        <button class="filter" data-action="filter" data-filter="all">All</button><br>
+    <div id="fsContainer">
+        <div id="filterContainer">
+            <label>Filter:</label><br>
+            <button class="filter" data-action="filter" data-filter="Slytherin">Slytherin</button><br>
+            <button class="filter" data-action="filter" data-filter="Ravenclaw">Ravenclaw</button><br>
+            <button class="filter" data-action="filter" data-filter="Hufflepuff">Hufflepuff</button><br>
+            <button class="filter" data-action="filter" data-filter="Gryffindor">Gryffindor</button><br>
+            <button class="filter" data-action="filter" data-filter="bloodType">Blood Type</button><br>
+            <button class="filter" data-action="filter" data-filter="prefect">Prefect</button><br>
+            <button class="filter" data-action="filter" data-filter="expelled">Expelled</button><br>
+            <button class="filter" data-action="filter" data-filter="all">All Students</button><br>
+        </div><br>
+        <div id="sortContainer">
+            <label>Sort:</label><br>
+            <button class="sort" data-action="filter" data-filter="Slytherin">Slytherin</button><br>
+            <button class="sort" data-action="filter" data-filter="Ravenclaw">Ravenclaw</button><br>
+            <button class="sort" data-action="filter" data-filter="Hufflepuff">Hufflepuff</button><br>
+            <button class="sort" data-action="filter" data-filter="Gryffindor">Gryffindor</button><br>
+            <button class="sort" data-action="filter" data-filter="bloodType">Blood Type</button><br>
+            <button class="sort" data-action="filter" data-filter="prefect">Prefect</button><br>
+        </div>
     </div>
     <table id="list">
         <thead>
@@ -42,6 +53,9 @@
         </tbody>
     </table>
 </main>
+<footer>
+    <label>Number of Students in total:<output type="text"></output></label>
+</footer>
         <!-- <div class="sectionwrapper">
             <template id="studentTemplate">
                 <div class="student">
@@ -68,16 +82,6 @@
             <div class="modalColor"></div>
         </div>
     </div> -->
-    <div class="modalBackground hide">
-        <div class="modelContent">
-            <h2 class="modalStudentName">Student Name</h2>
-            <h2 class="modalHouse">house</h2>
-            <h2 class="modalGender">gender</h2>
-            
-            <img class="modalImage" src="" alt="studentPhoto">
-            <div class="modalColor"></div>
-        </div>
-    </div>
 
     <template id="student">
         <tr>
@@ -88,11 +92,25 @@
           <td data-field="gender">GENDER</td>
           <td data-field="house">HOUSE</td>
           <td data-field="image"><img class="image" src="" alt=""></td>
-          <!-- <td><img src="images/" alt=""></td> -->
-          <!-- <img src="" alt=""/> -->
         </tr>
       </template>
     
+      <div class="modalBackground hide">
+        <div class="modelContent">
+            <!-- <h2 class="modalStudentName">Student Name</h2> -->
+            <td data-field="firstName" class="modal-firstName">FIRST NAME</td>
+            <td data-field="middleName" class="modal-middleName">MIDDLE NAME</td>
+            <td data-field="nickName" class="modal-nickName">NICK NAME</td>
+            <td data-field="lastName" class="modal-lastName">LAST NAME</td>
+            <!-- <h2 class="modalHouse">house</h2> -->
+            <td data-field="house" class="modal-house">HOUSE </td>
+            <!-- <h2 class="modalGender">gender</h2> -->
+            <td data-field="gender" class="modal-gender">GENDER</td>
+            <!-- <img class="modalImage" src="" alt="studentPhoto"> -->
+            <td data-field="image" class="modal-image"><img class="image" src="" alt=""></td>
+            <td data-field="house" class="modal-color"></td>
+        </div>
+    </div>
 <script src="script.js"></script>  
 </body>
 </html>

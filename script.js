@@ -139,6 +139,22 @@ function displayStudent(student) {
     document.querySelector("#list tbody").appendChild(clone);
 }
 
+function showModal(student) {
+    console.log(student);
+    const modal = document.querySelector(".modal-background");
+//   modal.querySelector(".modal-name").textContent = data.name;
+//   modal.querySelector(".modal-description").textContent = data.longdescription;
+modal.querySelector("[data-field=firstName]").textContent = student.firstName;
+modal.querySelector("[data-field=lastName]").textContent = student.lastName;
+modal.querySelector("[data-field=middleName]").textContent = student.middleName;
+modal.querySelector("[data-field=nickName]").textContent = student.nickName;
+modal.querySelector("[data-field=gender]").textContent = student.gender;
+modal.querySelector("[data-field=house]").textContent = student.house;
+modal.querySelector("img").src = `images/${student.image}`;
+  //...
+  modal.classList.remove("hide");
+}
+
 
 
 
