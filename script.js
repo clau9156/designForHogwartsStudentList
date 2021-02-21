@@ -40,22 +40,6 @@ function prepareObjects(jsonData) {
         // .split()
         const firstSpace = flSpace.indexOf(" ");
         const lastSpace = flSpace.lastIndexOf(" ");
-        // const hyphen = flSpace.indexOf("-");
-        // const quotation = flSpace.indexOf(`"`);
-        // first letter
-        // .substring(0,1).toUpperCase();
-        // rest
-        // .substring(1).toLowerCase();
-        // first letter + rest
-        // .textContent = first letter + rest;
-        // caps after - 
-        // SOMETHING
-
-        // fullName
-        // const fullName = jsonObject.fullname.split(" ");
-        // const firstName = fullName[0];
-        // const middleName = fullName[1];
-        // const
 
         // firstName
         if (firstSpace == -1) {
@@ -73,22 +57,18 @@ function prepareObjects(jsonData) {
         } else {
             student.lastName = flSpace.substring(lastSpace+1);
         }
-        // student.lastName = flSpace.substring(lastSpace).trim();
-        // student.lastName = student.lastName.substring(0, hyphen) 
-        // student.lastName = student.lastName.split("-");
+
         const hyphen = student.lastName.indexOf("-");
+
         if (hyphen == -1) {
             student.lastName = student.lastName.substring(0,1).toUpperCase() + student.lastName.substring(1).toLowerCase();        
         } else {
             student.lastName = student.lastName.substring(0, 1).toUpperCase() + student.lastName.substring(1, hyphen+1).toLowerCase() + student.lastName.substring(hyphen+1, hyphen+2).toUpperCase() + student.lastName.substring(hyphen+2).toLowerCase();
         }
-        // student.lastName = student.lastName.substring(0,1).toUpperCase() + student.lastName.substring(1).toLowerCase();
 
         // middleName
         student.middleName = flSpace.substring(firstSpace,lastSpace).trim();
-        // student.middleName = student.middleName.substring(0,1).toUpperCase() + student.middleName.substring(1).toLowerCase()
-        // nick Name ("")
-        // student.nickName = student.nickName.substring(0,1).toUpperCase() + student.nickName.substring(1).toLowerCase();
+    
         if (student.middleName.substring(0,1) == `"`) {
             student.nickName = student.middleName;
             student.middleName = "";
@@ -107,22 +87,14 @@ function prepareObjects(jsonData) {
         student.house = jsonObject.house.trim();
         student.house = student.house.substring(0,1).toUpperCase() + student.house.substring(1).toLowerCase();
 
-        // image : lastname(lowercase) on images / one lastname after - 
-        // lowercase: lastname_1firstname.png
-        // student.image = student.lastName.toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
         if (hyphen == -1) {
-            // document.getElementsByClassName("image").src = student.image;
-            // student.image = `images/` + student.lastName.toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
-            // student.image = student.lastName.toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
             student.image = student.lastName.toLowerCase() + "_" + student.firstName.substring(0,1).toLowerCase() + ".png";
         } else {
-            // document.getElementsByClassName("image").src = student.image;
             student.image = student.lastName.substring(hyphen+1).toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
         } 
         
         
         // new object 
-        // const name = jsonObject.fullname.split(" ");
         // student.firstName = name[0];
         console.log(student.firstName);
         // student.lastName = name[0];
@@ -162,10 +134,6 @@ function displayStudent(student) {
     clone.querySelector("[data-field=nickName]").textContent = student.nickName;
     clone.querySelector("[data-field=gender]").textContent = student.gender;
     clone.querySelector("[data-field=house]").textContent = student.house;
-    // clone.querySelector("[data-field=image]").textContent = student.image;
-    // clone.querySelector("[data-field=image]").(textContent) = student.image;
-    // clone.querySelector("[data-field=image]").src = student.image;
-    // clone.querySelector('img').content = student.image;
     clone.querySelector("img").src = `images/${student.image}`;
     // append clone to list
     document.querySelector("#list tbody").appendChild(clone);

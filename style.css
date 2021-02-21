@@ -1,0 +1,42 @@
+header {
+  grid-area: hd;
+  align-items: center;
+}
+
+h1 {
+  grid-area: h1;
+  text-align: center;
+}
+
+label {
+  grid-area: label;
+  align-items: flex-end;
+}
+
+h2 {
+  grid-area: h2;
+  text-align: center;
+}
+
+div {
+  grid-area: div;
+}
+
+table {
+  grid-area: table;
+}
+
+@media only screen and (min-width: 1100px) {
+  header {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr 0.2fr;
+    grid-template-areas: ". h1 label";
+  }
+  main {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    grid-template-areas:
+      "h2 h2"
+      "div table";
+  }
+}

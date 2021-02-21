@@ -8,9 +8,23 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <h1>Hogwarts School of Witchcraft and Wizardry</h1>
+    <header>
+        <h1>Hogwarts School of Witchcraft and Wizardry</h1>
+        <label><input type="text" placeholder="search"></label>
+    </header>
+    <main>
     <h2>Student List 1991</h2>
-
+    <div>
+        <label>Filter:</label><br>
+        <button class="filter" data-action="filter" data-filter="Slytherin">Slytherin</button><br>
+        <button class="filter" data-action="filter" data-filter="Ravenclaw">Ravenclaw</button><br>
+        <button class="filter" data-action="filter" data-filter="Hufflepuff">Hufflepuff</button><br>
+        <button class="filter" data-action="filter" data-filter="Gryffindor">Gryffindor</button><br>
+        <button class="filter" data-action="filter" data-filter="bloodType">Blood Type</button><br>
+        <button class="filter" data-action="filter" data-filter="responsibility">Responsibility</button><br>
+        <button class="filter" data-action="filter" data-filter="expelled">Expelled</button><br>
+        <button class="filter" data-action="filter" data-filter="all">All</button><br>
+    </div>
     <table id="list">
         <thead>
             <tr>
@@ -27,6 +41,7 @@
             <!-- student template will be copied and inserted here -->
         </tbody>
     </table>
+</main>
         <!-- <div class="sectionwrapper">
             <template id="studentTemplate">
                 <div class="student">
@@ -53,6 +68,16 @@
             <div class="modalColor"></div>
         </div>
     </div> -->
+    <div class="modalBackground hide">
+        <div class="modelContent">
+            <h2 class="modalStudentName">Student Name</h2>
+            <h2 class="modalHouse">house</h2>
+            <h2 class="modalGender">gender</h2>
+            
+            <img class="modalImage" src="" alt="studentPhoto">
+            <div class="modalColor"></div>
+        </div>
+    </div>
 
     <template id="student">
         <tr>
@@ -64,7 +89,7 @@
           <td data-field="house">HOUSE</td>
           <td data-field="image"><img class="image" src="" alt=""></td>
           <!-- <td><img src="images/" alt=""></td> -->
-          <img src="" alt=""/>
+          <!-- <img src="" alt=""/> -->
         </tr>
       </template>
     
