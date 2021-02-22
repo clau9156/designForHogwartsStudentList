@@ -151,12 +151,12 @@ function displayStudent(student) {
     // append clone to list
     document.querySelector("#list tbody").appendChild(clone);
 
-    copy.querySelector("button").addEventListener("click", () => {
-        console.log("click", dish);
-        fetch(`https://kea-alt-del.dk/t5/api/product?id=${dish.id}`)
-          .then((res) => res.json())
-          .then(showDetails);
-      });
+    // copy.querySelector("button").addEventListener("click", () => {
+    //     console.log("click", dish);
+    //     fetch(`https://kea-alt-del.dk/t5/api/product?id=${dish.id}`)
+    //       .then((res) => res.json())
+    //       .then(showDetails);
+    //   });
     
 }
 

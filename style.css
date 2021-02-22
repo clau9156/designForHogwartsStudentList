@@ -1,3 +1,12 @@
+/*body*/
+body {
+  margin: 0;
+}
+html body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: rgb(3, 3, 104);
 }
@@ -89,9 +98,9 @@ th {
 }
 
 /* modal */
-.hide {
+/* .hide {
   display: none;
-}
+} */
 
 .modal-background {
   position: fixed;
@@ -106,6 +115,7 @@ th {
 .modal-content {
   background-color: #0d0c6d;
   border: 1px solid #000000;
+  color: #fefefe;
   margin: 1em;
   padding: 2em;
 }
