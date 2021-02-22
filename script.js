@@ -12,10 +12,23 @@ const Student = {
     house: "",
     image: "unknown"
 };
+const modal = document.querySelector(".modal-background");
+modal.addEventListener("click", () => {
+  modal.classList.add("hide");
+});
 
 function init() {
     console.log("init");
     loadJSON();
+    document.querySelector("[data-filter=Slytherin]").addEventListener("click", slytherinButton);
+    document.querySelector("[data-filter=Ravenclaw]").addEventListener("click", ravenclawButton);
+    document.querySelector("[data-filter=Hufflepuff]").addEventListener("click", hufflepuffButton);
+    document.querySelector("[data-filter=Gryffindor]").addEventListener("click", gryffindorButton);
+    document.querySelector("[data-filter=bloodType]").addEventListener("click", bloodTypeButton);
+    document.querySelector("[data-filter=prefect]").addEventListener("click", prefectButton);
+    document.querySelector("[data-filter=expelled]").addEventListener("click", expelledButton);
+    document.querySelector("[data-filter=all]").addEventListener("click", allButton);
+
 }
 
 function loadJSON() {
@@ -137,6 +150,14 @@ function displayStudent(student) {
     clone.querySelector("img").src = `images/${student.image}`;
     // append clone to list
     document.querySelector("#list tbody").appendChild(clone);
+
+    copy.querySelector("button").addEventListener("click", () => {
+        console.log("click", dish);
+        fetch(`https://kea-alt-del.dk/t5/api/product?id=${dish.id}`)
+          .then((res) => res.json())
+          .then(showDetails);
+      });
+    
 }
 
 function showModal(student) {
@@ -144,16 +165,126 @@ function showModal(student) {
     const modal = document.querySelector(".modal-background");
 //   modal.querySelector(".modal-name").textContent = data.name;
 //   modal.querySelector(".modal-description").textContent = data.longdescription;
-modal.querySelector("[data-field=firstName]").textContent = student.firstName;
-modal.querySelector("[data-field=lastName]").textContent = student.lastName;
-modal.querySelector("[data-field=middleName]").textContent = student.middleName;
-modal.querySelector("[data-field=nickName]").textContent = student.nickName;
-modal.querySelector("[data-field=gender]").textContent = student.gender;
-modal.querySelector("[data-field=house]").textContent = student.house;
-modal.querySelector("img").src = `images/${student.image}`;
+    modal.querySelector("[data-field=firstName]").textContent = student.firstName;
+    modal.querySelector("[data-field=lastName]").textContent = student.lastName;
+    modal.querySelector("[data-field=middleName]").textContent = student.middleName;
+    modal.querySelector("[data-field=nickName]").textContent = student.nickName;
+    modal.querySelector("[data-field=gender]").textContent = student.gender;
+    modal.querySelector("[data-field=house]").textContent = student.house;
+// modal.querySelector("img").src = `images/${student.image}`;
+// modal.querySelector("[data-field=house]").textContent = student.house;
+// modal.querySelector("[data-field=house]").src = `images/${student.image}`;
+
   //...
-  modal.classList.remove("hide");
+    modal.classList.remove("hide");
 }
+
+// buttons
+function slytherinButton() {
+    const onlySlytherin = allStudents.filter(isSlytherin);
+    displayList(onlySlytherin);
+}
+
+function isSlytherin(student) {
+    if (student.house === "slytherin") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function ravenclawButton() {
+    const onlyRavenclaw = allStudents.filter(isRavenclaw);
+    displayList(onlyRavenclaw);
+}
+
+function isRavenclaw(student) {
+    if (student.house === "ravenclaw") {
+        return true;
+    } else {
+        return false;
+    }
+}
+  
+function hufflepuffButton() {
+    const onlyHufflepuff = allStudents.filter(isHufflepuff);
+    displayList(onlyHufflepuff);
+}
+
+function isHufflepuff(student) {
+    if (student.house === "hufflepuff") {
+        return true;
+    } else {
+        return false;
+    }
+}
+   
+function gryffindorButton() {
+    const onlyGryffindor = allStudents.filter(isGryffindor);
+    displayList(onlyGryffindor);
+}
+
+function isGryffindor(student) {
+    if (student.house === "gryffindor") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function bloodTypeButton() {
+    const onlyBloodType = allStudents.filter(isBloodType);
+    displayList(onlyBloodType);
+}
+
+function isBloodType(student) {
+    if (student.bloodType === "bloodType") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function prefectButton() {
+    const onlyPrefect = allStudents.filter(isPrefect);
+    displayList(onlyPrefect);
+}
+
+function isPrefect(student) {
+    if (student.prefect === "prefect") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function expelledButton() {
+    const onlyExpelled = allStudents.filter(isExpelled);
+    displayList(onlyExpelled);
+}
+
+function isExpelled(student) {
+    if (student.expelled === "expelled") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function allButton() {
+    const onlyAll = allStudents.filter(isAll);
+    displayList(loadJSON);
+    displayList(onlyAll);
+}
+
+function isAll(student) {
+    if (student.all === "all") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 
 
