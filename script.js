@@ -1,10 +1,15 @@
 "use strict";
-
+// blood family
+// https://petlatkea.dk/2021/hogwarts/families.json 
 window.addEventListener("DOMContentLoaded", init);
 
+// ARRAYS
 const allStudents = [];
 let allStudentsFiltered = [];
+let allStudentsExpelled = [];
+let allstudentPrefects = [];
 
+// OBJECTS
 const Student = {
     firstName: "",
     lastName: "",
@@ -12,10 +17,14 @@ const Student = {
     nickName: "unknown",
     gender: "",
     house: "",
-    image: "unknown"
+    image: "unknown",
+    prefect: false,
+    expelled: false
 };
 
 
+
+// EVENT LISTENERS
 function init() {
     console.log("init");
     loadJSON();
@@ -24,16 +33,16 @@ function init() {
     document.querySelector("[data-filter=Hufflepuff]").addEventListener("click", hufflepuffButton);
     document.querySelector("[data-filter=Gryffindor]").addEventListener("click", gryffindorButton);
     document.querySelector("[data-filter=BloodType]").addEventListener("click", bloodTypeButton);
-    document.querySelector("[data-filter=Prefect]").addEventListener("click", prefectButton);
+    // document.querySelector("[data-filter=Prefect]").addEventListener("click", prefectButton);
     // document.querySelector("[data-filter=expelled]").addEventListener("click", expelledButton);
     document.querySelector("[data-filter=all]").addEventListener("click", allButton);
     document.querySelector("[data-filter=firstNameSort]").addEventListener("click" , sortFirstName);
     document.querySelector("[data-filter=houseNameSort]").addEventListener("click", sortHouseName);
-
+    document.querySelector(".modalExpelledButton").querySelector.addEventListener("click", expelledButton);
+    document.querySelector(".modalPrefectButton").querySelector.addEventListener("click", prefectButton);
 }
-// blood family
-// https://petlatkea.dk/2021/hogwarts/families.json 
 
+// FETCH DATA
 function loadJSON() {
     console.log("loadJSON");
     fetch("https://petlatkea.dk/2020/hogwarts/students.json")
@@ -44,6 +53,7 @@ function loadJSON() {
     });
 }
 
+// CLEAN DATA
 function prepareObjects(jsonData) {
     console.log("prepareObjects");
     jsonData.forEach(jsonObject => {
@@ -125,12 +135,16 @@ function prepareObjects(jsonData) {
         console.log(student.house);
         // student.image = ;
 
+        // everyone first not expelled nor a prefect
+        student.expelled = false;
+        student.prefect = false;
+
         allStudents.unshift(student);
     });
-    allStudentsFiltered = allStudents ;
+    allStudentsFiltered = allStudents 
     displayList();
 }
-
+// DISPLAY
 function displayList() {
     console.log("displayList");
     // clear the list
@@ -165,10 +179,18 @@ function displayStudent(student) {
     
 }
 
+// MODAL
 function showModal(student) {
     console.log(student);
     const modal = document.querySelector(".modalBackground");
     modal.querySelector(".modalStudentName").textContent = student.firstName + " " + student.middleName + " " + student.lastName;
+    
+    // middlename
+    if (student.nickName){
+        modal.querySelector(".modalNickName").classList.remove("hide");
+        modal.querySelector(".modalNickName").textContent = "Nickname: " + student.nickName;
+    } 
+
     modal.querySelector(".modalHouse").textContent = student.house;
     modal.querySelector(".modalGender").textContent = "Gender: " + student.gender;
     modal.querySelector(".modalImage").src = `images/${student.image}`;
@@ -198,7 +220,7 @@ function showModal(student) {
     }
 }
 
-
+// SORT & FILTER
 function sortFirstName() {
     allStudentsFiltered.sort(compareFirstName);
     console.log(allStudentsFiltered);

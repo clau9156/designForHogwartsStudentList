@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <img class="headerImage" src="emblems/hogwarts.png" alt="logo">
+        <img class="headerImage" src="emblems/hogwarts.png" alt="hogwarts emblem my drawing">
         <h1>Hogwarts School of Witchcraft and Wizardry</h1>
         <label><input type="text" placeholder="search"></label>
     </header>
@@ -31,10 +31,6 @@
             <label>Sort:</label><br>
             <button class="sort" data-action="filter" data-filter="firstNameSort">First names a-z</button><br>
             <button class="sort" data-action="filter" data-filter="houseNameSort">Houses a-z</button><br>
-            <!-- <button class="sort" data-action="filter" data-filter="Slytherin">Slytherin</button><br>
-            <button class="sort" data-action="filter" data-filter="Ravenclaw">Ravenclaw</button><br>
-            <button class="sort" data-action="filter" data-filter="Hufflepuff">Hufflepuff</button><br>
-            <button class="sort" data-action="filter" data-filter="Gryffindor">Gryffindor</button><br> -->
         </div>
     </div>
     <table id="list">
@@ -104,16 +100,18 @@
                 <img class="modalEmblem" src="" alt="">
             </div>
             <h1 class="modalStudentName">Student Name</h1>
-            <!-- <td data-field="firstName" class="modalFirstName">FIRST NAME</td><br> -->
-            <!-- <td data-field="middleName" class="modalMiddleName">MIDDLE NAME</td><br> -->
+            <h2 class="modalNickName hide">Student Nickname</h2>
             <!-- <td data-field="nickName" class="modalNickName">NICK NAME</td><br> -->
-            <!-- <td data-field="lastName" class="modalLastName">LAST NAME</td><br> -->
             <h2 class="modalHouse">house</h2>
             <p class="modalGender">gender</p>
             <p class="modalBloodType">Blood Type</p>
             <p class="modalPrefect">prefect</p>
             <p class="modalExpelled">expelled</p>
             <p class="modalMember">member</p>
+            <div class=modalButtons>
+                <button class="modalExpelledButton">EXPELLIARMUS</button>
+                <button class="modalPrefectButton">PREFECT</button>
+            </div>
             <div class="modalColor"></div>
         </div>
     </div>
