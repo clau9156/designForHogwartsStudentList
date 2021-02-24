@@ -102,8 +102,8 @@ th {
   display: none;
 } */
 
-.modal-background {
-  position: fixed;
+.modalBackground {
+  position: absolute;
   z-index: 10;
   left: 0;
   top: 0;
@@ -112,7 +112,7 @@ th {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.modal-content {
+.modalContent {
   background-color: #0d0c6d;
   border: 1px solid #000000;
   color: #fefefe;

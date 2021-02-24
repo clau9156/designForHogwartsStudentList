@@ -30,7 +30,8 @@ function init() {
     document.querySelector("[data-filter=all]").addEventListener("click", allButton);
 
 }
-
+// blood family
+// https://petlatkea.dk/2021/hogwarts/families.json 
 function loadJSON() {
     console.log("loadJSON");
     fetch("https://petlatkea.dk/2020/hogwarts/students.json")
@@ -186,7 +187,7 @@ function slytherinButton() {
 }
 
 function isSlytherin(student) {
-    if (student.house === "slytherin") {
+    if (student.house === "Slytherin") {
         return true;
     } else {
         return false;
@@ -199,7 +200,7 @@ function ravenclawButton() {
 }
 
 function isRavenclaw(student) {
-    if (student.house === "ravenclaw") {
+    if (student.house === "Ravenclaw") {
         return true;
     } else {
         return false;
@@ -212,7 +213,7 @@ function hufflepuffButton() {
 }
 
 function isHufflepuff(student) {
-    if (student.house === "hufflepuff") {
+    if (student.house === "Hufflepuff") {
         return true;
     } else {
         return false;
@@ -225,7 +226,7 @@ function gryffindorButton() {
 }
 
 function isGryffindor(student) {
-    if (student.house === "gryffindor") {
+    if (student.house === "Gryffindor") {
         return true;
     } else {
         return false;
@@ -238,7 +239,7 @@ function bloodTypeButton() {
 }
 
 function isBloodType(student) {
-    if (student.bloodType === "bloodType") {
+    if (student.bloodType === "BloodType") {
         return true;
     } else {
         return false;
@@ -251,7 +252,7 @@ function prefectButton() {
 }
 
 function isPrefect(student) {
-    if (student.prefect === "prefect") {
+    if (student.prefect === "Prefect") {
         return true;
     } else {
         return false;
@@ -264,7 +265,7 @@ function expelledButton() {
 }
 
 function isExpelled(student) {
-    if (student.expelled === "expelled") {
+    if (student.expelled === "Expelled") {
         return true;
     } else {
         return false;
@@ -284,9 +285,6 @@ function isAll(student) {
         return false;
     }
 }
-
-
-
 
 
 
