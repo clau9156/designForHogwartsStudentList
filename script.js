@@ -3,6 +3,8 @@
 window.addEventListener("DOMContentLoaded", init);
 
 const allStudents = [];
+let allStudentsFiltered = [];
+
 const Student = {
     firstName: "",
     lastName: "",
@@ -12,10 +14,7 @@ const Student = {
     house: "",
     image: "unknown"
 };
-const modal = document.querySelector(".modal-background");
-modal.addEventListener("click", () => {
-  modal.classList.add("hide");
-});
+
 
 function init() {
     console.log("init");
@@ -26,12 +25,14 @@ function init() {
     document.querySelector("[data-filter=Gryffindor]").addEventListener("click", gryffindorButton);
     document.querySelector("[data-filter=bloodType]").addEventListener("click", bloodTypeButton);
     document.querySelector("[data-filter=prefect]").addEventListener("click", prefectButton);
-    document.querySelector("[data-filter=expelled]").addEventListener("click", expelledButton);
+    // document.querySelector("[data-filter=expelled]").addEventListener("click", expelledButton);
     document.querySelector("[data-filter=all]").addEventListener("click", allButton);
+    document.querySelector("[data-filter=firstNameSort]").addEventListener("click" , sortFirstName);
 
 }
 // blood family
 // https://petlatkea.dk/2021/hogwarts/families.json 
+
 function loadJSON() {
     console.log("loadJSON");
     fetch("https://petlatkea.dk/2020/hogwarts/students.json")
@@ -125,6 +126,7 @@ function prepareObjects(jsonData) {
 
         allStudents.unshift(student);
     });
+    allStudentsFiltered = allStudents ;
     displayList();
 }
 
@@ -142,6 +144,7 @@ function displayStudent(student) {
     // create clone / aka cloning my template in html
     const clone = document.querySelector("template#student").content.cloneNode(true);
     // set clone data
+    clone.querySelector("[data-field=firstName]").addEventListener("click", clickStudent);
     clone.querySelector("[data-field=firstName]").textContent = student.firstName;
     clone.querySelector("[data-field=lastName]").textContent = student.lastName;
     clone.querySelector("[data-field=middleName]").textContent = student.middleName;
@@ -152,26 +155,30 @@ function displayStudent(student) {
     // append clone to list
     document.querySelector("#list tbody").appendChild(clone);
 
-    // copy.querySelector("button").addEventListener("click", () => {
-    //     console.log("click", dish);
-    //     fetch(`https://kea-alt-del.dk/t5/api/product?id=${dish.id}`)
-    //       .then((res) => res.json())
-    //       .then(showDetails);
-    //   });
+    // clone.querySelector("[data-field=firstName]").addEventListener("click", clickStudent);
+    function clickStudent() {
+        console.log("clickStudent");
+        showModal(student);
+    } 
+    
     
 }
 
 function showModal(student) {
     console.log(student);
-    const modal = document.querySelector(".modal-background");
-//   modal.querySelector(".modal-name").textContent = data.name;
+    const modal = document.querySelector(".modalBackground");
+    modal.querySelector(".modalStudentName").textContent = student.firstName + " " + student.lastName;
+    modal.querySelector(".modalHouse").textContent = student.house;
+    modal.querySelector(".modalGender").textContent = student.gender;
+
+    //   modal.querySelector(".modal-name").textContent = data.name;
 //   modal.querySelector(".modal-description").textContent = data.longdescription;
-    modal.querySelector("[data-field=firstName]").textContent = student.firstName;
-    modal.querySelector("[data-field=lastName]").textContent = student.lastName;
-    modal.querySelector("[data-field=middleName]").textContent = student.middleName;
-    modal.querySelector("[data-field=nickName]").textContent = student.nickName;
-    modal.querySelector("[data-field=gender]").textContent = student.gender;
-    modal.querySelector("[data-field=house]").textContent = student.house;
+    // modal.querySelector("[data-field=firstName]").textContent = student.firstName;
+    // modal.querySelector("[data-field=lastName]").textContent = student.lastName;
+    // modal.querySelector("[data-field=middleName]").textContent = student.middleName;
+    // modal.querySelector("[data-field=nickName]").textContent = student.nickName;
+    // modal.querySelector("[data-field=gender]").textContent = student.gender;
+    // modal.querySelector("[data-field=house]").textContent = student.house;
 // modal.querySelector("img").src = `images/${student.image}`;
 // modal.querySelector("[data-field=house]").textContent = student.house;
 // modal.querySelector("[data-field=house]").src = `images/${student.image}`;
@@ -180,10 +187,32 @@ function showModal(student) {
     modal.classList.remove("hide");
 }
 
+function sortFirstName () {
+    allStudentsFiltered.sort(compareFirstName);
+    console.log(allStudentsFiltered);
+    displayListFiltered(allStudentsFiltered);
+
+}
+
+function compareFirstName (a,b) {
+    if ( a.firstName < b.firstName ) {
+        return -1;
+    } else {
+        return 1 ; 
+    }
+} 
+
+function displayListFiltered (filtered) {
+    document.querySelector("#list tbody").innerHTML = "";
+    // build a new list
+    filtered.forEach(displayStudent);
+}
+
 // buttons
 function slytherinButton() {
     const onlySlytherin = allStudents.filter(isSlytherin);
-    displayList(onlySlytherin);
+    allStudentsFiltered = onlySlytherin ;
+    displayListFiltered(onlySlytherin);
 }
 
 function isSlytherin(student) {
@@ -196,7 +225,8 @@ function isSlytherin(student) {
 
 function ravenclawButton() {
     const onlyRavenclaw = allStudents.filter(isRavenclaw);
-    displayList(onlyRavenclaw);
+    allStudentsFiltered = onlyRavenclaw ;
+    displayListFiltered(onlyRavenclaw);
 }
 
 function isRavenclaw(student) {
@@ -209,7 +239,8 @@ function isRavenclaw(student) {
   
 function hufflepuffButton() {
     const onlyHufflepuff = allStudents.filter(isHufflepuff);
-    displayList(onlyHufflepuff);
+    allStudentsFiltered = onlyHufflepuff ;
+    displayListFiltered(onlyHufflepuff);
 }
 
 function isHufflepuff(student) {
@@ -222,7 +253,8 @@ function isHufflepuff(student) {
    
 function gryffindorButton() {
     const onlyGryffindor = allStudents.filter(isGryffindor);
-    displayList(onlyGryffindor);
+    allStudentsFiltered = onlyGryffindor ;
+    displayListFiltered(onlyGryffindor);
 }
 
 function isGryffindor(student) {

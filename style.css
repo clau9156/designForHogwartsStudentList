@@ -75,6 +75,7 @@ table {
 td {
   text-align: center;
   color: #fefefe;
+  padding: 2vw;
 }
 
 th {
@@ -98,9 +99,9 @@ th {
 }
 
 /* modal */
-/* .hide {
+.hide {
   display: none;
-} */
+}
 
 .modalBackground {
   position: absolute;
@@ -113,6 +114,7 @@ th {
 }
 
 .modalContent {
+  z-index: 20;
   background-color: #0d0c6d;
   border: 1px solid #000000;
   color: #fefefe;
