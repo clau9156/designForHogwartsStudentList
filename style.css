@@ -101,7 +101,6 @@ th {
       "h2 h2"
       "fs table";
   }
-
 }
 
 /* modal */
@@ -143,7 +142,7 @@ th {
 
 .modalEmblem {
   grid-area: modalEmblem;
-  height:5vw;
+  height: 5vw;
   position: absolute;
   width: auto;
   z-index: 26;
@@ -159,7 +158,7 @@ th {
 .Slytherin {
   background-color: green;
   height: 20px;
-  width: 100px; */
+  width: 100px;
   position: absolute;
 }
 
