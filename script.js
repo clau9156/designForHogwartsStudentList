@@ -23,11 +23,12 @@ function init() {
     document.querySelector("[data-filter=Ravenclaw]").addEventListener("click", ravenclawButton);
     document.querySelector("[data-filter=Hufflepuff]").addEventListener("click", hufflepuffButton);
     document.querySelector("[data-filter=Gryffindor]").addEventListener("click", gryffindorButton);
-    document.querySelector("[data-filter=bloodType]").addEventListener("click", bloodTypeButton);
-    document.querySelector("[data-filter=prefect]").addEventListener("click", prefectButton);
+    document.querySelector("[data-filter=BloodType]").addEventListener("click", bloodTypeButton);
+    document.querySelector("[data-filter=Prefect]").addEventListener("click", prefectButton);
     // document.querySelector("[data-filter=expelled]").addEventListener("click", expelledButton);
     document.querySelector("[data-filter=all]").addEventListener("click", allButton);
     document.querySelector("[data-filter=firstNameSort]").addEventListener("click" , sortFirstName);
+    document.querySelector("[data-filter=houseNameSort]").addEventListener("click", sortHouseName);
 
 }
 // blood family
@@ -167,14 +168,17 @@ function displayStudent(student) {
 function showModal(student) {
     console.log(student);
     const modal = document.querySelector(".modalBackground");
-    modal.querySelector(".modalStudentName").textContent = student.firstName + " " + student.lastName;
+    modal.querySelector(".modalStudentName").textContent = student.firstName + " " + student.middleName + " " + student.lastName;
     modal.querySelector(".modalHouse").textContent = student.house;
-    modal.querySelector(".modalGender").textContent = student.gender;
+    modal.querySelector(".modalGender").textContent = "Gender: " + student.gender;
     modal.querySelector(".modalImage").src = `images/${student.image}`;
     // modal.querySelector(".modalEmblem").src = `emblems/${student.house}`;
     modal.querySelector(".modalEmblem").src = `emblems/hogwarts.png`;
-    modal.querySelector(".modalPrefect").textContent = "is/not prefect";
-    modal.querySelector(".modalContent").setAttribute("class", student.house);
+    modal.querySelector(".modalPrefect").textContent = "Prefect: " + "is/not prefect";
+    modal.querySelector(".modalColor").classList.add(student.house);
+    modal.querySelector(".modalExpelled").textContent = "Expelled: " + "is/not expelled";
+    modal.querySelector(".modalMember").textContent = "Member of Inquisitorial Squad: " + "is/not member";
+    modal.querySelector(".modalBloodType").textContent = "Blood Status: " +"blood type";
 
 
 
@@ -186,16 +190,29 @@ function showModal(student) {
 
   //...
     modal.classList.remove("hide");
+    document.querySelector(".modalClose").addEventListener("click", closeModal);
+    function closeModal() {
+        document.querySelector(".modalBackground").classList.add("hide");
+        modal.querySelector(".modalContent").classList.remove(student.house);
+    
+    }
 }
 
-function sortFirstName () {
+
+function sortFirstName() {
     allStudentsFiltered.sort(compareFirstName);
     console.log(allStudentsFiltered);
     displayListFiltered(allStudentsFiltered);
 
 }
 
-function compareFirstName (a,b) {
+function sortHouseName() {
+    allStudentsFiltered.sort(compareHouseName);
+    console.log(allStudentsFiltered);
+    displayListFiltered(allStudentsFiltered);
+}
+
+function compareFirstName(a,b) {
     if ( a.firstName < b.firstName ) {
         return -1;
     } else {
@@ -203,7 +220,15 @@ function compareFirstName (a,b) {
     }
 } 
 
-function displayListFiltered (filtered) {
+function compareHouseName (a,b) {
+    if ( a.house < b.house ) {
+        return -1;
+    } else {
+        return 1 ; 
+    }
+}
+
+function displayListFiltered(filtered) {
     document.querySelector("#list tbody").innerHTML = "";
     // build a new list
     filtered.forEach(displayStudent);
@@ -268,7 +293,8 @@ function isGryffindor(student) {
 
 function bloodTypeButton() {
     const onlyBloodType = allStudents.filter(isBloodType);
-    displayList(onlyBloodType);
+    allStudentsFiltered = onlyBloodType;
+    displayListFiltered(onlyBloodType);
 }
 
 function isBloodType(student) {
@@ -281,7 +307,8 @@ function isBloodType(student) {
 
 function prefectButton() {
     const onlyPrefect = allStudents.filter(isPrefect);
-    displayList(onlyPrefect);
+    allStudentsFiltered = onlyPrefects;
+    displayListFiltered(onlyPrefect);
 }
 
 function isPrefect(student) {
@@ -294,7 +321,9 @@ function isPrefect(student) {
 
 function expelledButton() {
     const onlyExpelled = allStudents.filter(isExpelled);
-    displayList(onlyExpelled);
+    allStudentsFiltered = onlyExpelled;
+    displayListFiltered(onlyExpelled);
+
 }
 
 function isExpelled(student) {

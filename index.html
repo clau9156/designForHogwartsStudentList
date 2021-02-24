@@ -9,6 +9,7 @@
 </head>
 <body>
     <header>
+        <img class="headerImage" src="emblems/hogwarts.png" alt="logo">
         <h1>Hogwarts School of Witchcraft and Wizardry</h1>
         <label><input type="text" placeholder="search"></label>
     </header>
@@ -25,15 +26,15 @@
             <button class="filter" data-action="filter" data-filter="Prefect">Prefect</button><br>
             <button class="filter" data-action="filter" data-filter="Expelled">Expelled</button><br>
             <button class="filter" data-action="filter" data-filter="all">All Students</button><br>
-        </div><br>
+        </div><br><br>
         <div id="sortContainer">
             <label>Sort:</label><br>
-            <button class="sort" data-action="filter" data-filter="Slytherin">Slytherin</button><br>
+            <button class="sort" data-action="filter" data-filter="firstNameSort">First names a-z</button><br>
+            <button class="sort" data-action="filter" data-filter="houseNameSort">Houses a-z</button><br>
+            <!-- <button class="sort" data-action="filter" data-filter="Slytherin">Slytherin</button><br>
             <button class="sort" data-action="filter" data-filter="Ravenclaw">Ravenclaw</button><br>
             <button class="sort" data-action="filter" data-filter="Hufflepuff">Hufflepuff</button><br>
-            <button class="sort" data-action="filter" data-filter="Gryffindor">Gryffindor</button><br>
-            <button class="sort" data-action="filter" data-filter="bloodType">Blood Type</button><br>
-            <button class="sort" data-action="filter" data-filter="prefect">Prefect</button><br>
+            <button class="sort" data-action="filter" data-filter="Gryffindor">Gryffindor</button><br> -->
         </div>
     </div>
     <table id="list">
@@ -97,21 +98,23 @@
     
     <div class="modalBackground hide">
         <div class="modalContent">
+            <button class="modalClose">Close</button>
             <div class="modalImages">
                 <img class="modalImage" src="" alt="">
                 <img class="modalEmblem" src="" alt="">
             </div>
-            <h2 class="modalStudentName">Student Name</h2>
+            <h1 class="modalStudentName">Student Name</h1>
             <!-- <td data-field="firstName" class="modalFirstName">FIRST NAME</td><br> -->
             <!-- <td data-field="middleName" class="modalMiddleName">MIDDLE NAME</td><br> -->
             <!-- <td data-field="nickName" class="modalNickName">NICK NAME</td><br> -->
             <!-- <td data-field="lastName" class="modalLastName">LAST NAME</td><br> -->
             <h2 class="modalHouse">house</h2>
-            <h2 class="modalGender">gender</h2>
-            <h2 class="modalPrefect">prefect</h2>
-            <h2 class="modalMember">member</h2>
+            <p class="modalGender">gender</p>
+            <p class="modalBloodType">Blood Type</p>
+            <p class="modalPrefect">prefect</p>
+            <p class="modalExpelled">expelled</p>
+            <p class="modalMember">member</p>
             <div class="modalColor"></div>
-            <!-- <td data-field="house" class="modal-color"></td> -->
         </div>
     </div>
 <script src="script.js"></script>  
