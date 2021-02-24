@@ -147,11 +147,11 @@ function displayStudent(student) {
     clone.querySelector("[data-field=firstName]").addEventListener("click", clickStudent);
     clone.querySelector("[data-field=firstName]").textContent = student.firstName;
     clone.querySelector("[data-field=lastName]").textContent = student.lastName;
-    clone.querySelector("[data-field=middleName]").textContent = student.middleName;
-    clone.querySelector("[data-field=nickName]").textContent = student.nickName;
-    clone.querySelector("[data-field=gender]").textContent = student.gender;
+    // clone.querySelector("[data-field=middleName]").textContent = student.middleName;
+    // clone.querySelector("[data-field=nickName]").textContent = student.nickName;
+    // clone.querySelector("[data-field=gender]").textContent = student.gender;
     clone.querySelector("[data-field=house]").textContent = student.house;
-    clone.querySelector("img").src = `images/${student.image}`;
+    // clone.querySelector("img").src = `images/${student.image}`;
     // append clone to list
     document.querySelector("#list tbody").appendChild(clone);
 
@@ -170,17 +170,18 @@ function showModal(student) {
     modal.querySelector(".modalStudentName").textContent = student.firstName + " " + student.lastName;
     modal.querySelector(".modalHouse").textContent = student.house;
     modal.querySelector(".modalGender").textContent = student.gender;
+    modal.querySelector(".modalImage").src = `images/${student.image}`;
+    // modal.querySelector(".modalEmblem").src = `emblems/${student.house}`;
+    modal.querySelector(".modalEmblem").src = `emblems/hogwarts.png`;
+    modal.querySelector(".modalPrefect").textContent = "is/not prefect";
+    modal.querySelector(".modalContent").setAttribute("class", student.house);
 
-    //   modal.querySelector(".modal-name").textContent = data.name;
-//   modal.querySelector(".modal-description").textContent = data.longdescription;
+
+
     // modal.querySelector("[data-field=firstName]").textContent = student.firstName;
     // modal.querySelector("[data-field=lastName]").textContent = student.lastName;
     // modal.querySelector("[data-field=middleName]").textContent = student.middleName;
     // modal.querySelector("[data-field=nickName]").textContent = student.nickName;
-    // modal.querySelector("[data-field=gender]").textContent = student.gender;
-    // modal.querySelector("[data-field=house]").textContent = student.house;
-// modal.querySelector("img").src = `images/${student.image}`;
-// modal.querySelector("[data-field=house]").textContent = student.house;
 // modal.querySelector("[data-field=house]").src = `images/${student.image}`;
 
   //...

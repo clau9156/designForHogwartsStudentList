@@ -83,7 +83,7 @@ th {
   color: #fefefe;
 }
 
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 700px) {
   header {
     display: grid;
     grid-template-columns: 0.2fr 1fr 0.2fr;
@@ -106,10 +106,10 @@ th {
 .modalBackground {
   position: absolute;
   z-index: 10;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  left: 25%;
+  top: 20%;
+  width: 50%;
+  height: 30%;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -120,4 +120,58 @@ th {
   color: #fefefe;
   margin: 1em;
   padding: 2em;
+}
+
+/* .modalImages {
+
+} */
+
+.modalImage {
+  height: 20vw;
+  width: auto;
+  z-index: 25;
+  top: 5vw;
+  left: 5vw;
+}
+
+.modalEmblem {
+  height: 10vw;
+  position: relative;
+  width: auto;
+  z-index: 26;
+  /* top: 5vw;
+  left: 5vw; */
+}
+
+/* .modalColor {
+  height: 20px;
+  width: 100px;
+} */
+
+.Slytherin {
+  background-color: green;
+  /* height: 20px;
+  width: 100px; */
+  /* position: absolute; */
+}
+
+.Gryffindor {
+  background-color: red;
+  /* height: 20px;
+  width: 100px; */
+  /* position: absolute; */
+}
+
+.Hufflepuff {
+  background-color: yellow;
+  /* height: 20px;
+  width: 100px; */
+  /* position: absolute; */
+}
+
+.Ravenclaw {
+  background-color: blue;
+  /* height: 20px;
+  width: 100px;
+  position: absolute; */
 }
