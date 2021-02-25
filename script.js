@@ -18,6 +18,7 @@ const Student = {
     nickName: "unknown",
     gender: "",
     house: "",
+    bloodType: "",
     image: "unknown",
     prefect: false,
     expelled: false
@@ -140,7 +141,30 @@ function prepareObjects(jsonData) {
         // student.expelled = false;
         // student.prefect = false;
 
+        // FETCH JSON DATA FOR BLOOD/FAMILY
+    //     fetch("https://petlatkea.dk/2021/hogwarts/families.json")
+    // .then(r => r.json())
+    // .then (jsonData => {
+    //     student.bloodType = checkBloodType(student, jsonDATA)
+    //     // loaded --> prepare objects
+    //     prepareObjects(jsonData);
+
+
+    });
+    // function checkBloodType() {
+    //     console.log("checkBloodType");
+    //     if (student.lastName is pure) {
+    //         return "pure"
+    //     } else if (student.lastName is a half) {
+    //         retrun "half"
+    //     } else {
+    //         return mugle
+    //     }
+    // }
+
+
         allStudents.unshift(student);
+
     });
     allStudentsFiltered = allStudents 
     displayList();
@@ -208,13 +232,11 @@ function showModal(student) {
     modal.querySelector(".modalMember").textContent = "Member of Inquisitorial Squad: " + "is/not member";
     modal.querySelector(".modalBloodType").textContent = "Blood Status: " +"blood type";
 
-
-
     // modal.querySelector("[data-field=firstName]").textContent = student.firstName;
     // modal.querySelector("[data-field=lastName]").textContent = student.lastName;
     // modal.querySelector("[data-field=middleName]").textContent = student.middleName;
     // modal.querySelector("[data-field=nickName]").textContent = student.nickName;
-// modal.querySelector("[data-field=house]").src = `images/${student.image}`;
+    // modal.querySelector("[data-field=house]").src = `images/${student.image}`;
 
     // EXPELLED STUDENTS
     modal.querySelector(".modalExpelledButton").addEventListener("click", modalExpelledButton);
@@ -240,8 +262,45 @@ function showModal(student) {
         // allStudentsExpelled.unshift(student);
         console.log(allStudentPrefects);
         displayListFiltered(allStudentsFiltered);
+
+        function prefectClicked() {
+            console.log("prefectClicked");
+            if(student.prefect == true) {
+                let prefect = 
+            }
+        }
     }
 
+    function displayAnimal( animal ) {
+        // create clone
+        const clone = document.querySelector("template#animal").content.cloneNode(true);
+    
+        // set clone data
+        // TODO: Display winner
+        // clone.querySelector("[data-field=winner]").addEventListener("click", clickWinner );
+
+    function clickWinner () {
+        console.log("hahahah");
+        if (animal.winner == false) {
+            let won = checkWinnerNumber(animal) ;
+            console.log(won);
+            animal.winner = won;
+            /*console.log("⭐");*/
+        } else { 
+            animal.winner = false;
+            allWinnerAnimal = allWinnerAnimal.filter(isLoser);
+            console.log(allWinnerAnimal);
+        }
+        console.log(animal);
+        buildList();
+    }
+
+    if (animal.winner == false ) {
+        //🏆
+        clone.querySelector("[data-field=winner]").classList.add ("loser") ;
+    } else {
+        clone.querySelector("[data-field=winner]").classList.remove ("loser") ;
+    }
     
   //...
     modal.classList.remove("hide");
