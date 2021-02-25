@@ -4,7 +4,8 @@
 window.addEventListener("DOMContentLoaded", init);
 
 // ARRAYS
-const allStudents = [];
+// const allStudents = [];
+let allStudents = [];
 let allStudentsFiltered = [];
 let allStudentsExpelled = [];
 let allstudentPrefects = [];
@@ -33,13 +34,13 @@ function init() {
     document.querySelector("[data-filter=Hufflepuff]").addEventListener("click", hufflepuffButton);
     document.querySelector("[data-filter=Gryffindor]").addEventListener("click", gryffindorButton);
     document.querySelector("[data-filter=BloodType]").addEventListener("click", bloodTypeButton);
-    // document.querySelector("[data-filter=Prefect]").addEventListener("click", prefectButton);
-    // document.querySelector("[data-filter=expelled]").addEventListener("click", expelledButton);
+    document.querySelector("[data-filter=Prefect]").addEventListener("click", prefectButton);
+    document.querySelector("[data-filter=Expelled]").addEventListener("click", expelledButton);
     document.querySelector("[data-filter=all]").addEventListener("click", allButton);
     document.querySelector("[data-filter=firstNameSort]").addEventListener("click" , sortFirstName);
     document.querySelector("[data-filter=houseNameSort]").addEventListener("click", sortHouseName);
-    document.querySelector(".modalExpelledButton").querySelector.addEventListener("click", expelledButton);
-    document.querySelector(".modalPrefectButton").querySelector.addEventListener("click", prefectButton);
+    // document.querySelector(".modalExpelledButton").querySelector.addEventListener("click", expelledButton);
+    // document.querySelector(".modalPrefectButton").querySelector.addEventListener("click", prefectButton);
 }
 
 // FETCH DATA
@@ -136,8 +137,8 @@ function prepareObjects(jsonData) {
         // student.image = ;
 
         // everyone first not expelled nor a prefect
-        student.expelled = false;
-        student.prefect = false;
+        // student.expelled = false;
+        // student.prefect = false;
 
         allStudents.unshift(student);
     });
@@ -184,7 +185,11 @@ function showModal(student) {
     console.log(student);
     const modal = document.querySelector(".modalBackground");
     modal.querySelector(".modalStudentName").textContent = student.firstName + " " + student.middleName + " " + student.lastName;
-    
+    modal.querySelector(".modalColor").classList.remove("Slytherin");
+    modal.querySelector(".modalColor").classList.remove("Gryffindor");
+    modal.querySelector(".modalColor").classList.remove("Hufflepuff");
+    modal.querySelector(".modalColor").classList.remove("Ravenclaw");
+
     // middlename
     if (student.nickName){
         modal.querySelector(".modalNickName").classList.remove("hide");
@@ -193,6 +198,7 @@ function showModal(student) {
 
     modal.querySelector(".modalHouse").textContent = student.house;
     modal.querySelector(".modalGender").textContent = "Gender: " + student.gender;
+    // FIX TWO PEOPLE WIITH SAME P AND SAME LAST NAME
     modal.querySelector(".modalImage").src = `images/${student.image}`;
     // modal.querySelector(".modalEmblem").src = `emblems/${student.house}`;
     modal.querySelector(".modalEmblem").src = `emblems/hogwarts.png`;
@@ -210,10 +216,38 @@ function showModal(student) {
     // modal.querySelector("[data-field=nickName]").textContent = student.nickName;
 // modal.querySelector("[data-field=house]").src = `images/${student.image}`;
 
+    // EXPELLED STUDENTS
+    modal.querySelector(".modalExpelledButton").addEventListener("click", modalExpelledButton);
+    modal.querySelector(".modalPrefectButton").addEventListener("click", modalPrefectButton);
+    
+    function modalExpelledButton() {
+        console.log("modalExpelledButton");
+        modal.querySelector(".modalExpelledButton").removeEventListener("click", modalExpelledButton);
+        student.expelled = true;
+        allStudents = allStudents.filter(expelling);
+        allStudentsFiltered = allStudentsFiltered.filter(expelling);
+        allStudentsExpelled.unshift(student);
+        console.log(allStudentsExpelled);
+        displayListFiltered(allStudentsFiltered);
+    }
+
+    function modalPrefectButton() {
+        console.log("modalPrefectButton");
+        modal.querySelector(".modalPrefectButton").removeEventListener("click", modalPrefectButton);
+        student.prefect = true;
+        // allStudents = allStudents.filter(expelling);
+        // allStudentsFiltered = allStudentsFiltered.filter(expelling);
+        // allStudentsExpelled.unshift(student);
+        console.log(allStudentPrefects);
+        displayListFiltered(allStudentsFiltered);
+    }
+
+    
   //...
     modal.classList.remove("hide");
     document.querySelector(".modalClose").addEventListener("click", closeModal);
     function closeModal() {
+        console.log("closeModal");
         document.querySelector(".modalBackground").classList.add("hide");
         modal.querySelector(".modalContent").classList.remove(student.house);
     
@@ -247,6 +281,15 @@ function compareHouseName (a,b) {
         return -1;
     } else {
         return 1 ; 
+    }
+}
+
+function expelling(student) {
+    console.log("expelling");
+    if (student.expelled == true) {
+        return false;
+    } else {
+        return true;
     }
 }
 
@@ -342,10 +385,11 @@ function isPrefect(student) {
 }
 
 function expelledButton() {
-    const onlyExpelled = allStudents.filter(isExpelled);
+    // const onlyExpelled = allStudents.filter(isExpelled);
+    console.log("expelled Button");
+    const onlyExpelled = allStudentsExpelled;
     allStudentsFiltered = onlyExpelled;
     displayListFiltered(onlyExpelled);
-
 }
 
 function isExpelled(student) {
