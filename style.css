@@ -101,6 +101,11 @@ th {
       "h2 h2"
       "fs table";
   }
+  modalImage {
+    display: grid;
+    grid-template-columns: (1fr);
+    grid-template-areas: modalEmblem;
+  }
 }
 
 /* modal */
@@ -181,6 +186,22 @@ th {
   height: 20px;
   width: 100px;
   position: absolute;
+}
+
+#Slytherin {
+  background-image: url(/emblems/slytherin_color.png);
+}
+
+#Gryffindor {
+  background-image: url(/emblems/gryffindor_color.png);
+}
+
+#Hufflepuff {
+  background-image: url(/emblems/hufflepuff_color.png);
+}
+
+#Ravenclaw {
+  background-image: url(/emblems/ravenclaw_color.png);
 }
 
 .modalClose {
