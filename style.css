@@ -208,3 +208,7 @@ th {
   position: absolute;
   right: 10%;
 }
+
+.hover:hover {
+  background-color: rgb(12, 12, 71);
+}

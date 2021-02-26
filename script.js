@@ -12,6 +12,7 @@ let allStudentsExpelled = [];
 // let gryffindorPrefects = [];
 // let hufflepuffPrefects = [];
 // let ravenclawPrefects = [];
+const searchBar = document.querySelector("#searchBar");
 
 // OBJECTS
 const Student = {
@@ -210,6 +211,17 @@ function displayStudent(student) {
     
     
 }
+
+// SEARCH
+searchBar.addEventListener("keyup", (e) => {
+    console.log("search");
+    let searchString = e.target.value;
+    searchString = searchString.toLowerCase();
+    const filterStudents = allStudents.filter((student) => {
+        return (student.firstName.toLowerCase().includes(searchString) || student.lastName.toLowerCase().includes(searchString) || student.house.toLowerCase().includes(searchString));
+    });
+    displayListFiltered(filterStudents);
+});
 
 // MODAL
 function showModal(student) {
@@ -443,13 +455,13 @@ function prefectRavenclaw(student) {
 function checkHouse (theList) {
     console.log("checkHouse");
 
-    if (theList.length == 0 ){
+    if (theList.length == 0){
         console.log("Counting for 0");
         return true
-    } else if (theList.length == 1  ) {
+    } else if (theList.length == 1) {
         console.log("Counting  for 1");
         return true
-    } else if (theList.length == 2 ) {
+    } else if (theList.length == 2) {
         return false
     } else {
         return false
