@@ -25,11 +25,13 @@
             <button class="filter" data-action="filter" data-filter="BloodType">Blood Type</button><br>
             <button class="filter" data-action="filter" data-filter="Prefect">Prefect</button><br>
             <button class="filter" data-action="filter" data-filter="Expelled">Expelled</button><br>
+            <button class="filter" data-action="filter" data-filter="Squad">The Inquisitorial Squad</button><br>
             <button class="filter" data-action="filter" data-filter="all">All Students</button><br>
         </div><br><br>
         <div id="sortContainer">
             <label>Sort:</label><br>
             <button class="sort" data-action="filter" data-filter="firstNameSort">First names a-z</button><br>
+            <button class="sort" data-action="filter" data-filter="lastNameSort">Last names a-z</button><br>
             <button class="sort" data-action="filter" data-filter="houseNameSort">Houses a-z</button><br>
         </div>
     </div>
@@ -53,33 +55,6 @@
 <footer>
     <label>Number of Students in total:<output type="text"></output></label>
 </footer>
-        <!-- <div class="sectionwrapper">
-            <template id="studentTemplate">
-                <div class="student">
-                    <h2 class="studentName">Full name</h2>
-                    <h2 class="firstName">first name</h2>
-                    <h2 class="middleName">middle name</h2>
-                    <h2 class="lastName">last name</h2>
-                    <h2 class="nickName1">middle name 1</h2>
-                    <h2 class="nickName2">middle name 2</h2>
-                    <img class="image" src="" alt="studentPhoto"> 
-                    <h2 class="house">house</h2>
-                    <h2 class="gender">gender</h2>
-                </div>
-            </template>
-        </div> -->
-
-    <!-- <div class="modalBackground hide">
-        <div class="modalContent">
-            <h2 class="modalStudentName">Student Name</h2>
-            <h2 class="modalHouse">house</h2>
-            <h2 class="modalGender">gender</h2>
-            
-            <img class="modalImage" src="" alt="studentPhoto">
-            <div class="modalColor"></div>
-        </div>
-    </div> -->
-
     <template id="student">
         <tr>
           <td data-field="firstName" class="hover">FIRST NAME</td>
@@ -107,11 +82,12 @@
             <p class="modalBloodType">Blood Type</p>
             <p class="modalPrefect">prefect</p>
             <p class="modalExpelled">expelled</p>
-            <p class="modalMember">member</p>
+            <p class="modalSquad">squad</p>
             <div class=modalButtons>
                 <button class="modalExpelledButton">EXPELLIARMUS</button>
                 <button class="modalPrefectButton">PREFECT</button>
-                <label class="modalPrefectDisplay"></label>
+                <button class="modalSquadButton">Join The Inquisitorial Squad</button>
+                <!-- <label class="modalPrefectDisplay"></label> -->
             </div>
             <div class="modalColor"></div>
         </div>
