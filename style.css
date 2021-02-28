@@ -44,9 +44,29 @@ label {
   color: #fefefe;
 }
 
-footer > label {
+/* footer > label {
   grid-area: label;
   padding-left: 70%;
+  color: #fefefe;
+} */
+
+footer {
+  padding: 2vw;
+  grid-area: footer;
+}
+
+#numHouses {
+  grid-area: numHouses;
+  color: #fefefe;
+}
+
+#numCurrent {
+  grid-area: numCurrent;
+  color: #fefefe;
+}
+
+#numExpelled {
+  grid-area: numExpelled;
   color: #fefefe;
 }
 
@@ -110,9 +130,14 @@ th {
       "h2 h2"
       "fs table";
   }
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: ". numHouses numCurrent numExpelled";
+  }
   modalImage {
     display: grid;
-    grid-template-columns: (1fr);
+    grid-template-columns: 1fr;
     grid-template-areas: modalEmblem;
   }
 }
@@ -150,18 +175,19 @@ th {
   height: 20vw;
   width: auto;
   z-index: 25;
-  top: 5vw;
-  left: 5vw;
+  position: relative;
+  top: 1vw;
+  left: 5.5vw;
 }
 
 .modalEmblem {
   grid-area: modalEmblem;
   height: 5vw;
-  position: absolute;
+  position: relative;
   width: auto;
   z-index: 26;
-  top: 16vw;
-  left: 16vw;
+  /* top: 1vw;
+  left: 1vw; */
 }
 
 .modalColor {
@@ -238,4 +264,12 @@ p {
   font-size: 1.5vw;
   margin-top: 0.8vw;
   margin-bottom: 0.8vw;
+}
+
+#filterContainer > label {
+  font-size: 1.5vw;
+}
+
+#sortContainer > label {
+  font-size: 1.5vw;
 }
