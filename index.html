@@ -38,7 +38,7 @@
     <table id="list">
         <thead>
             <tr>
-                <th>FirstName</th>
+                <th><button class="hacked">FirstName</button></th>
                 <!-- <th>MiddleName</th> -->
                 <!-- <th>NickName</th> -->
                 <th>LastName</th>
@@ -53,7 +53,6 @@
     </table>
 </main>
 <footer>
-    <label>Total number of Students:<output type="text" id="showNumTotal">0</output></label>
     <label>Number of Students in Gryffindor:<output type="text" id="showNumGryffindor">0</output></label>
     <label>Number of Students in Slytherin:<output type="text" id="showNumSlytherin">0</output></label>
     <label>Number of Students in Hufflepuff:<output type="text" id="showNumHufflepuff">0</output></label>
@@ -83,6 +82,7 @@
             </div>
             <h1 class="modalStudentName">Student Name</h1>
             <h2 class="modalNickName hide">Student Nickname</h2>
+            <div class="modalColor"></div><br>
             <!-- <td data-field="nickName" class="modalNickName">NICK NAME</td><br> -->
             <h2 class="modalHouse">house</h2>
             <p class="modalGender">gender</p>
@@ -96,7 +96,6 @@
                 <button class="modalSquadButton">Join The Inquisitorial Squad</button>
                 <!-- <label class="modalPrefectDisplay"></label> -->
             </div>
-            <div class="modalColor"></div>
         </div>
     </div>
 <script src="script.js"></script>  

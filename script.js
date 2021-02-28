@@ -37,6 +37,7 @@ const Student = {
 function init() {
     console.log("init");
     loadJSON();
+    document.querySelector(".hacked").addEventListener("click", hackTheSystem);
     document.querySelector("[data-filter=Slytherin]").addEventListener("click", slytherinButton);
     document.querySelector("[data-filter=Ravenclaw]").addEventListener("click", ravenclawButton);
     document.querySelector("[data-filter=Hufflepuff]").addEventListener("click", hufflepuffButton);
@@ -188,10 +189,6 @@ function displayList() {
     document.querySelector("#list tbody").innerHTML = "";
     // build a new list
     countNumberStudents();
-    document.querySelector("#showNumTotal").textContent = allStudents.length;
-    document.querySelector("#showNumTotalNotExpelled").textContent = allStudents.length;
-    // document.querySelector("#showNumExpelled").textContent = allStudentsExpelled.length;
-    document.querySelector("#showNumCurrentlyDisp").textContent = allStudents.length;
 
     allStudents.forEach(displayStudent);
     console.table(allStudents);
@@ -222,7 +219,6 @@ function displayStudent(student) {
     
 }
 
-// TODO counting not done
 // COUNTING STUDENTS
 function countNumberStudents() {
     const slytherinStudent = allStudents.filter(student => {
@@ -253,12 +249,13 @@ function countNumberStudents() {
             return false;
         }
     });
-    
     document.querySelector("#showNumGryffindor").textContent = gryffindorStudent.length;
     document.querySelector("#showNumSlytherin").textContent = slytherinStudent.length;
     document.querySelector("#showNumHufflepuff").textContent = hufflepuffStudent.length;
     document.querySelector("#showNumRavenclaw").textContent = ravenclawStudent.length;
+    document.querySelector("#showNumTotalNotExpelled").textContent = allStudents.length;
     document.querySelector("#showNumExpelled").textContent = allStudentsExpelled.length;
+    document.querySelector("#showNumCurrentlyDisp").textContent = allStudentsFiltered.length;
 }
 
 // SEARCH
@@ -286,7 +283,9 @@ function showModal(student) {
     if (student.nickName){
         modal.querySelector(".modalNickName").classList.remove("hide");
         modal.querySelector(".modalNickName").textContent = "Nickname: " + student.nickName;
-    } 
+    } else {
+        
+    }
 
     modal.querySelector(".modalHouse").textContent = student.house;
     modal.querySelector(".modalGender").textContent = "Gender: " + student.gender;
@@ -332,13 +331,9 @@ function showModal(student) {
             console.log(allStudentsExpelled);
             displayListFiltered(allStudentsFiltered);
             student.prefect = false;
-            // TODO remove from array prefect
+            student.squad = false;
         }
     }
-
-    // if (student.prefect == true) {
-    //     modal.querySelector(".prefectIndicator").classList.remove("modalPrefectDisplay"); 
-    // }
 
     // TODO toggle
     function modalPrefectButton() {
@@ -366,13 +361,17 @@ function showModal(student) {
         modal.querySelector(".modalSquadButton").removeEventListener("click", modalSquadButton);
         if (student.squad == true) {
             student.squad = false;
+            // addSquad();
         } else if (student.house === "Slytherin") {
             student.squad = true;
+            // addSquad();
         } else if (student.bloodType === "pure") {
             student.squad = true;
+            // addSquad();
         } else if (student.bloodType === "half", student.bloodType === "muggle") {
             alert("Student can't become a member.")
         }
+        // addSquad();
     }
     
   //...
@@ -389,11 +388,11 @@ function showModal(student) {
     }
 }
 
-// TODO adding me and is hacking working?
 // HACKING
 function hackTheSystem() {
    if (systemHacked == false) {
        console.log("System Hacked");
+       document.querySelector(".hacked").removeEventListener("click", hackTheSystem);
        const me = Object.create(student);
 
        me.firstName = "Claudia";
@@ -407,7 +406,7 @@ function hackTheSystem() {
        me.prefect = true;
        me.expelled = "impossible";
        me.squad = false;
-       
+
        hackBloodStatus();
        allStudents.unshift(me);
 
@@ -423,8 +422,8 @@ function addSquad() {
     console.log("addSquad");
     if (systemHacked == true) {
         setTimeout(function() {
-            squadButton();
-        }, 1000);
+            // squadButton();
+        }, 100);
     }
     allStudents[index].squad = true;
     document.querySelector(".modalSquadButton").classList.add("click", squadButton);
@@ -437,26 +436,25 @@ function removeSquad() {
     if (systemHacked == true) {
         setTimeout(function() {
             alert("Removed from squad");
-        }, 100);
+        }, 200);
     }
     allStudents[index].squad = false;
 }
 
-// TODO not done
 function hackBloodStatus() {
     allStudents.forEach((student) => {
-        if(student.bloodType === "") {
-            student.bloodType = "";
-        } else if (student.bloodType === "") {
-            student.bloodType = "";
+        if(student.bloodType === "muggle") {
+            student.bloodType = "pure";
+        } else if (student.bloodType === "half") {
+            student.bloodType = "pure";
         } else {
             let bloodRandomNum = Math.floor(Math.random() * 3);
             if (bloodRandomNum == 0) {
-                student.bloodType = "";
+                student.bloodType = "muggle";
             } else if (bloodRandomNum == 1) {
-                student.bloodType = "";
+                student.bloodType = "half";
             } else {
-                student.bloodType = "";
+                student.bloodType = "pure";
             }
         }
     })
@@ -492,7 +490,6 @@ function prefectSlytherin(student) {
                 // modal.querySelector(".prefectIndicator").classList.remove("modalPrefectDisplay");
 
             } else if (isPersonPrefect == false) {
-                // TODO make a modal instead
                 alert ("You can't become prefect!")
             } 
 }
@@ -525,7 +522,6 @@ function prefectGryffindor(student) {
                 // modal.querySelector(".prefectIndicator").classList.remove("modalPrefectDisplay");
 
             } else if (isPersonPrefect == false) {
-                // TODO make a modal instead
                 alert ("You can't become prefect!")
             }   
 }
@@ -558,7 +554,6 @@ function prefectHufflepuff(student) {
                 // modal.querySelector(".prefectIndicator").classList.remove("modalPrefectDisplay");
 
             } else if (isPersonPrefect == false) {
-                // TODO make a modal instead
                 alert ("You can't become prefect!")
             }   
 }
@@ -591,7 +586,6 @@ function prefectRavenclaw(student) {
                 // modal.querySelector(".prefectIndicator").classList.remove("modalPrefectDisplay");
 
             } else if (isPersonPrefect == false) {
-                // TODO make a modal instead
                 alert ("You can't become prefect!")
             }   
 }
@@ -671,6 +665,8 @@ function expelling(student) {
 function displayListFiltered(filtered) {
     document.querySelector("#list tbody").innerHTML = "";
     // build a new list
+    countNumberStudents();
+
     filtered.forEach(displayStudent);
 }
 
@@ -766,17 +762,17 @@ function expelledButton() {
     const onlyExpelled = allStudentsExpelled;
     allStudentsFiltered = onlyExpelled;
     displayListFiltered(onlyExpelled);
+
 }
 
 function isExpelled(student) {
-    if (student.expelled === "Expelled") {
+    if (student.expelled == true) {
         return true;
     } else {
         return false;
     }
 }
 
-// TODO have members be displayed
 function squadButton() {
     console.log("squadButton");
     const onlySquad = allStudents.filter(isSquad);
@@ -786,7 +782,7 @@ function squadButton() {
 }
 
 function isSquad(student) {
-    if (student.squad === "Squad") {
+    if (student.squad == true) {
         return true;
     } else {
         return false;

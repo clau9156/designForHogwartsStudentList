@@ -35,6 +35,7 @@ h3 {
 button {
   color: #fefefe;
   background-color: rgb(3, 3, 104);
+  font-size: 1.2vw;
 }
 
 label {
@@ -79,13 +80,21 @@ table {
 
 td {
   text-align: center;
-  color: #fefefe;
+  color: black;
   padding: 2vw;
+  font-size: 1.2vw;
+  font-weight: 700;
+  outline-style: dashed;
+  outline-color: rgb(12, 12, 71);
+  background-color: white;
 }
 
 th {
   text-align: center;
   color: #fefefe;
+  font-size: 1.5vw;
+  background-color: rgb(12, 12, 71);
+  padding: 1vw;
 }
 
 @media only screen and (min-width: 700px) {
@@ -117,7 +126,7 @@ th {
   position: fixed;
   z-index: 10;
   left: 25%;
-  top: 12%;
+  top: 4%;
   /* width: 50vw;
   height: 30vw; */
   background-color: rgba(0, 0, 0, 0.7);
@@ -151,8 +160,8 @@ th {
   position: absolute;
   width: auto;
   z-index: 26;
-  top: 35%;
-  left: 55%;
+  top: 16vw;
+  left: 16vw;
 }
 
 .modalColor {
@@ -162,30 +171,34 @@ th {
 
 .Slytherin {
   background-color: green;
-  height: 20px;
-  width: 100px;
+  height: 10px;
+  width: 200px;
   position: absolute;
+  left: 13.5vw;
 }
 
 .Gryffindor {
   background-color: red;
-  height: 20px;
-  width: 100px;
+  height: 10px;
+  width: 200px;
   position: absolute;
+  left: 13.5vw;
 }
 
 .Hufflepuff {
   background-color: yellow;
-  height: 20px;
-  width: 100px;
+  height: 10px;
+  width: 200px;
   position: absolute;
+  left: 13.5vw;
 }
 
 .Ravenclaw {
   background-color: blue;
-  height: 20px;
-  width: 100px;
+  height: 10px;
+  width: 200px;
   position: absolute;
+  left: 13.5vw;
 }
 
 #Slytherin {
@@ -210,5 +223,19 @@ th {
 }
 
 .hover:hover {
-  background-color: rgb(12, 12, 71);
+  background-color: beige;
+}
+
+th > button {
+  background: none;
+  border: none;
+  outline: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+p {
+  font-size: 1.5vw;
+  margin-top: 0.8vw;
+  margin-bottom: 0.8vw;
 }
